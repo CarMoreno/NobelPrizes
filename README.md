@@ -13,4 +13,6 @@ El comité del Premio Nobel quiere realizar una serie de estudios sobre los dato
 8. ¿Cuántos Premios Nobel compartidos existen por categoría?
 9. ¿Cuántos Premios Nobel compartidos existen en total?
 
-Se usará **MongoDB** para realizar las consultas que dan solucion a las preguntas propuestas
+Se usará **MongoDB** para realizar las consultas que dan solucion a las preguntas propuestas.
+
+_Los datos usados fueron obtenidos desde: http://api.nobelprize.org/v1/laureate.json_
