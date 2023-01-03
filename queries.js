@@ -1,11 +1,11 @@
-// 1. ¿Cuántos Premios Nobel se han entregado en el mundo, según la disciplina?
+// 1. How many Nobel Prizes have been awarded in the world, according to discipline?
 var mapFunction = function() {
     for(row of this.prizes) {
         emit(row.category, {"year": row.year, "count": 1})
     }
 }
 var reduceFunction = function(year, count_year) {
-    // Primero removemos los arrays con objetos duplicados, esto sucede cuando un premio nobel es otorgado a mas de una persona
+    // Firstly, we are going to remove the arrays with duplicated objects, this happens when a nobel prize is awarded to more than one person.
     count_year = [...new Set(count_year.map(s => JSON.stringify(s)))].map(s => JSON.parse(s))
     count = 0
     for(var row of count_year) {
@@ -23,7 +23,7 @@ db.nobel.mapReduce(
 
 db.count_by_category.find()
 
-// 2. ¿Cuáles son los países donde han nacido la mayoría de ganadores del Premio Nobel?
+// 2. Which are the countries where most Nobel Prize winners were born?
 var mapFunction = function() {
     emit(this.bornCountry, 1)
 }
@@ -42,7 +42,7 @@ db.nobel.mapReduce(
 
 db.count_by_country.find().sort({value: -1})
 
-// 3. ¿Han sido las mujeres más galardonados que los hombres?
+// 3. Have women won more Nobel Prizes than men?
 var mapFunction = function() {
     emit(this.gender, 1)
 }
@@ -60,7 +60,7 @@ db.nobel.mapReduce(
 
 db.count_by_gender.find()
 
-// 4. ¿En qué disciplinas se destacan principalmente los hombres y las mujeres?
+// 4. In which disciplines do men and women mainly excel?
 var mapFunction = function() {
     for (row of this.prizes) {
         emit(this.gender, row.category)
@@ -96,7 +96,7 @@ db.nobel.mapReduce(mapFunction, reduceFunction, {out: "gender_categories"})
 
 db.gender_categories.find()
 
-// 5. ¿Cuál es el top 3 de países sudamericanos más galardonados?
+// 5. What are the top 3 South American countries with the most Nobel Prize winners?
 var mapFunction = function() {
     emit(this.bornCountry, 1)
 }
@@ -114,7 +114,7 @@ db.nobel.mapReduce(
 
 db.ranking_sudamericanos.find().sort({value: -1})
 
-// 6. ¿Cuáles son los países que más mujeres galardonadas ha tenido?
+// 6. Which is the top 3 countries that have had the most female award winners?
 var mapFunction = function() {
     emit(this.bornCountry, 1)
 }
@@ -131,7 +131,7 @@ db.nobel.mapReduce(
 )
 db.females_by_country.find().sort({value: -1})
 
-// 7. ¿Cuántas personas han ganado más de un Premio Nobel?
+// 7. How many people have won more than one Nobel Prize?
 
 var mapFunction = function() {
     if(this.prizes.length > 1) {
@@ -146,7 +146,7 @@ db.nobel.mapReduce(mapFunction, reduceFunction, {out: "gte_one_prize", query:{ g
 
 db.gte_one_prize.find()
 
-// 8. ¿Cuántos Premios Nobel compartidos existen por categoría?
+// 8. How many shared Nobel Prizes are there per category?
 
 var mapFunction = function() {
     for(prize of this.prizes) {
@@ -156,7 +156,7 @@ var mapFunction = function() {
     }
 }
 var reduceFunction = function(category, year_count) {
-    //Removemos los objetos duplicados
+    //Remove duplicated objects
     year_count = [...new Set(year_count.map(s => JSON.stringify(s)))].map(s => JSON.parse(s))
 
     count = 0
