@@ -12,7 +12,3 @@ El comité del Premio Nobel quiere realizar una serie de estudios sobre los dato
 7. ¿Cuántas personas han ganado más de un Premio Nobel?
 8. ¿Cuántos Premios Nobel compartidos existen por categoría?
 9. ¿Cuántos Premios Nobel compartidos existen en total?
-
-Se usó **MongoDB** para realizar las consultas que dan solución a las preguntas propuestas anteriormente.
-
-_Los datos usados fueron obtenidos desde: http://api.nobelprize.org/v1/laureate.json_
