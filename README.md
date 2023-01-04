@@ -16,6 +16,6 @@ The Nobel Prize committee wants to carry out a series of studies on the data of 
 
 ### Solution
 
-There are many ways to solution the above question. Personally, I am going to use MongoDB to leverage the format of the data. Additionally, I resolved the questions using a MapReduce approach (I know there are situations where it is better to use other kind of strategies)
+There are many ways to answer the above questions. Personally, I am going to use MongoDB to leverage the format of the data. Additionally, I resolved the questions using a MapReduce approach (I know there are situations where it is better to use other kind of strategies)
 
 The data used was obtained from: http://api.nobelprize.org/v1/laureate.json_
